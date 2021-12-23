@@ -1,7 +1,7 @@
 with open("malidata/templates/layout.html", "r", encoding="utf-8") as f:
     text = f.read()
 
-newhtml = "<div class='container'>{%app_entry%}</div>" + "<footer>{%config%} {%scripts%} {%renderer%}</footer>"
+newhtml = "{%app_entry%} <footer>{%config%} {%scripts%} {%renderer%}</footer>"
 text = text.replace("{% block content %}{% endblock %}", newhtml)
 text = text.replace("active", "")
 text = text.replace('<a class="nav-link" href="/dashboard/">Dashboard</a>', '<a class="nav-link active" href="/dashboard/">Dashboard</a>')
