@@ -1,6 +1,9 @@
+import pandas as pd
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html
+from .connect_database import conn
+
 layout = dbc.Container([
     html.Div([
         html.H3('Thirteenth General Programme of Work, 2019-2023'),
@@ -92,5 +95,4 @@ layout = dbc.Container([
             html.H4('Indicators of Universal Health Coverage'),
         ], style={'textAlign': 'center', 'color': '#148F77', 'backgroundColor': '#D1F2EB', 'marginBottom': '20px',
                   'height': '50px', 'line-height': '50px', 'paddingTop': '10px'}),
-
 ])

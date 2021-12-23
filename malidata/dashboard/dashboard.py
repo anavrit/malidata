@@ -8,7 +8,7 @@ def init_dashboard(server):
     dash_app = dash.Dash(
         server = server,
         routes_pathname_prefix = "/dashboard/",
-        external_stylesheets=[dbc.themes.BOOTSTRAP, '/static/custom.css'],
+        external_stylesheets=[dbc.themes.BOOTSTRAP],
     )
 
     dash_app.index_string = html_layout
