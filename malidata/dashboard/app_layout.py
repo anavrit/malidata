@@ -4,7 +4,11 @@ import dash_bootstrap_components as dbc
 from dash import dcc, html
 from .connect_database import conn
 
-df = pd.read_sql("SELECT population FROM billions WHERE year=2019 AND billion='UHC'", conn)
+### Dropdown options for UHC ###
+uhc_ind = pd.read_sql("SELECT indicator.id, indicator.transformed_name FROM indicator JOIN gpw13 ON indicator.id = gpw13.indicator WHERE gpw13.billion='UHC'", conn)
+uhc_labels = uhc_ind['transformed_name'].unique()
+uhc_values = uhc_ind['id'].unique()
+uhc_options = [{'label': uhc_labels[i], 'value': uhc_values[i]} for i in range(len(uhc_labels))]
 
 layout = dbc.Container([
     html.Div([
@@ -49,7 +53,7 @@ layout = dbc.Container([
                             dbc.CardHeader([
                                 html.H4("Health Emergencies Protection"),
                             ], style={'textAlign': 'center', 'paddingTop': '15px', 'backgroundColor': '#2874A6', 'color': 'white'}),
-                            html.H2("711 500", className="card-title", id="hep-billion",
+                            html.H2("", className="card-title", id="hep-billion",
                                     style={'textAlign': 'center', 'marginTop': '15px'}),
                             html.Hr(),
                             html.P(
@@ -76,7 +80,7 @@ layout = dbc.Container([
                             dbc.CardHeader([
                                 html.H4("Healthier Populations"),
                             ], style={'textAlign': 'center', 'paddingTop': '15px', 'backgroundColor': '#76448A', 'color': 'white'}),
-                            html.H2("-241 800", className="card-title", id="hpp-billion",
+                            html.H2("", className="card-title", id="hpp-billion",
                                     style={'textAlign': 'center', 'marginTop': '15px'}),
                             html.Hr(),
                             html.P(
@@ -104,6 +108,15 @@ layout = dbc.Container([
         ], style={'textAlign': 'center', 'color': '#148F77', 'backgroundColor': '#D1F2EB', 'marginBottom': '20px',
                   'height': '50px', 'line-height': '50px', 'paddingTop': '15px'}),
         html.Div([
-
-        ])
+            html.H5("Select Indicator")
+        ], style={'textAlign': 'center'}),
+        dbc.Row([
+            dbc.Col([
+                dcc.Dropdown(
+                    id='uhc-dropdown',
+                    options=uhc_options,
+                    value=12
+                )
+            ], width={'size': 4, 'offset': 4})
+        ]),
 ])
