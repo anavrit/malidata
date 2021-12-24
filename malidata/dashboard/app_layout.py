@@ -13,7 +13,7 @@ layout = dbc.Container([
     html.Div([
         html.H4('Tracking Progress in the Triple Billion Targets'),
     ], style={'textAlign': 'center', 'color': 'white', 'backgroundColor': '#2E86C1', 'marginBottom': '20px',
-              'height': '50px', 'line-height': '50px', 'paddingTop': '10px'}),
+              'height': '50px', 'paddingTop': '10px'}),
     dbc.Row(
         [
             dbc.Col(dbc.Card([
@@ -23,17 +23,19 @@ layout = dbc.Container([
                                 html.H4("Universal Health Coverage"),
                             ], style={'textAlign': 'center', 'paddingTop': '15px', 'backgroundColor': '#D1F2EB', 'color': '#148F77'}),
                             html.H2("44 300", className="card-title", id="uhc-billion",
-                                    style={'textAlign': 'center', 'marginTop': '15px'}),
+                                    style={'textAlign': 'center', 'paddingTop': '15px'}),
                             html.Hr(),
                             html.P(
                                 "Additional number of people benefiting from UHC in Mali compared to 2018, tracked via 15 indicators on coverage of essential health services and financial hardship.",
                                 className="card-text",
                             ),
                             html.Hr(),
-                            dbc.Button("2019", color="primary", className="me-1", id="uhc-btn-1", n_clicks=0),
-                            dbc.Button("2023", outline=True, color="secondary", className="me-1", id="uhc-btn-2", n_clicks=0),
-                            dbc.Button("2025", outline=True, color="secondary", className="me-1", id="uhc-btn-3", n_clicks=0),
-                            html.Br(), html.Br(),
+                            html.Div([
+                                dbc.Button("2019", color="primary", className="me-1", id="uhc-btn-1", n_clicks=0),
+                                dbc.Button("2023", outline=True, color="primary", className="me-1", id="uhc-btn-2", n_clicks=0),
+                                dbc.Button("2025", outline=True, color="primary", className="me-1", id="uhc-btn-3", n_clicks=0),
+                            ]),
+                            html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
                                 " WHO data and preliminary projections, 2021. ",
@@ -55,10 +57,12 @@ layout = dbc.Container([
                                 className="card-text",
                             ),
                             html.Hr(),
-                            dbc.Button("2019", color="primary", className="me-1", id="hep-btn-1", n_clicks=0),
-                            dbc.Button("2023", outline=True, color="secondary", className="me-1", id="hep-btn-2", n_clicks=0),
-                            dbc.Button("2025", outline=True, color="secondary", className="me-1", id="hep-btn-3", n_clicks=0),
-                            html.Br(), html.Br(),
+                            html.Div([
+                                dbc.Button("2019", color="primary", className="me-1", id="hep-btn-1", n_clicks=0),
+                                dbc.Button("2023", outline=True, color="primary", className="me-1", id="hep-btn-2", n_clicks=0),
+                                dbc.Button("2025", outline=True, color="primary", className="me-1", id="hep-btn-3", n_clicks=0),
+                            ]),
+                            html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
                                 " WHO data and preliminary projections, 2021. ",
@@ -80,10 +84,12 @@ layout = dbc.Container([
                                 className="card-text",
                             ),
                             html.Hr(),
-                            dbc.Button("2019", color="primary", className="me-1", id="hpp-btn-1", n_clicks=0),
-                            dbc.Button("2023", outline=True, color="secondary", className="me-1", id="hpp-btn-2", n_clicks=0),
-                            dbc.Button("2025", outline=True, color="secondary", className="me-1", id="hpp-btn-3", n_clicks=0),
-                            html.Br(), html.Br(),
+                            html.Div([
+                                dbc.Button("2019", color="primary", className="me-1", id="hpp-btn-1", n_clicks=0),
+                                dbc.Button("2023", outline=True, color="primary", className="me-1", id="hpp-btn-2", n_clicks=0),
+                                dbc.Button("2025", outline=True, color="primary", className="me-1", id="hpp-btn-3", n_clicks=0),
+                            ]),
+                            html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
                                 " WHO data and preliminary projections, 2021. ",
