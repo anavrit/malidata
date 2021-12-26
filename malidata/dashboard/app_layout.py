@@ -8,7 +8,9 @@ from .connect_database import conn
 uhc_ind = pd.read_sql("SELECT indicator.id, indicator.transformed_name FROM indicator JOIN gpw13 ON indicator.id = gpw13.indicator WHERE gpw13.billion='UHC'", conn)
 uhc_labels = uhc_ind['transformed_name'].unique()
 uhc_values = uhc_ind['id'].unique()
+espar = pd.read_sql("SELECT * FROM indicator WHERE ind='espar'", conn)
 uhc_options = [{'label': uhc_labels[i], 'value': uhc_values[i]} for i in range(len(uhc_labels))]
+uhc_options.append({'label': espar['transformed_name'][0], 'value': espar['id'][0]})
 
 layout = dbc.Container([
     html.Div([
@@ -42,7 +44,7 @@ layout = dbc.Container([
                             html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
-                                " WHO data and preliminary projections, 2021. ",
+                                " GPW 13 Triple Billion Dashboard. ",
                                 dbc.CardLink("Learn more", href="https://portal.who.int/triplebillions/Home/FAQ")
                             ]),
                         ]),
@@ -69,7 +71,7 @@ layout = dbc.Container([
                             html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
-                                " WHO data and preliminary projections, 2021. ",
+                                " GPW 13 Triple Billion Dashboard. ",
                                 dbc.CardLink("Learn more", href="https://portal.who.int/triplebillions/Home/FAQ")
                             ]),
                         ]),
@@ -96,7 +98,7 @@ layout = dbc.Container([
                             html.Br(),
                             dbc.CardFooter([
                                 html.Span("Source:", style={'font-weight': 'bold'}),
-                                " WHO data and preliminary projections, 2021. ",
+                                " GPW 13 Triple Billion Dashboard. ",
                                 dbc.CardLink("Learn more", href="https://portal.who.int/triplebillions/Home/FAQ")
                             ]),
                         ]),
