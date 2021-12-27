@@ -4,6 +4,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 from .dash_layout import html_layout
 from .app_layout import layout
+from .figures import uhc_figure
 import dash_bootstrap_components as dbc
 from .connect_database import conn
 
@@ -106,5 +107,12 @@ def init_dashboard(server):
         data = pd.read_sql(f"SELECT population FROM billions WHERE year={year} AND billion='HPP'", conn)
         return_style = {id: False if id == button_id else True for id in inputs}
         return str('{:,}'.format(data['population'][0]).replace(',', ' ')), return_style['hpp-btn-1'], return_style['hpp-btn-2'], return_style['hpp-btn-3']
+
+    @dash_app.callback(
+        Output('uhc-line-plot', 'figure'),
+        [Input('uhc-dropdown', 'value')]
+    )
+    def uhc_line_plot(indicator):
+        return uhc_figure(indicator)
 
     return dash_app.server

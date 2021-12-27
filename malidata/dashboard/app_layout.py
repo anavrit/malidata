@@ -3,6 +3,8 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 from .connect_database import conn
+from .figures import uhc_figure
+import plotly.graph_objs as go
 
 ### Dropdown options for UHC ###
 uhc_ind = pd.read_sql("SELECT indicator.id, indicator.transformed_name FROM indicator JOIN gpw13 ON indicator.id = gpw13.indicator WHERE gpw13.billion='UHC'", conn)
@@ -121,4 +123,11 @@ layout = dbc.Container([
                 )
             ], width={'size': 4, 'offset': 4})
         ]),
+        dbc.Row([
+            dbc.Col([
+                dcc.Graph(
+                    id='uhc-line-plot',
+                )
+            ], width=6)
+        ])
 ])
