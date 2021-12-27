@@ -14,6 +14,13 @@ espar = pd.read_sql("SELECT * FROM indicator WHERE ind='espar'", conn)
 uhc_options = [{'label': uhc_labels[i], 'value': uhc_values[i]} for i in range(len(uhc_labels))]
 uhc_options.append({'label': espar['transformed_name'][0], 'value': espar['id'][0]})
 
+### Dropdown list of countries ###
+all_countries = pd.read_sql("SELECT id, country FROM iso3", conn)
+all_countries_list = all_countries['country'].values
+all_countries_id = all_countries['id'].values
+all_countries_ = [{'label': all_countries_list[i], 'value': all_countries_id[i]} for i in range(len(all_countries_id))]
+
+
 layout = dbc.Container([
     html.Div([
         html.H3('Thirteenth General Programme of Work, 2019-2023'),
@@ -127,7 +134,18 @@ layout = dbc.Container([
             dbc.Col([
                 dcc.Graph(
                     id='uhc-line-plot',
+                ),
+                html.Div([
+                html.H6('Add more countries:'),
+                dcc.Dropdown(
+                    id='country-dropdown',
+                    options=all_countries_,
+                    value=[115],
+                    placeholder='Select one or more countries',
+                    multi=True,
+                    style={'width': '100%'}
                 )
+            ], style={'display': 'flex'})
             ], width=6)
         ])
 ])

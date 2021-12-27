@@ -110,9 +110,10 @@ def init_dashboard(server):
 
     @dash_app.callback(
         Output('uhc-line-plot', 'figure'),
-        [Input('uhc-dropdown', 'value')]
+        [Input('uhc-dropdown', 'value'),
+         Input('country-dropdown', 'value')]
     )
-    def uhc_line_plot(indicator):
-        return uhc_figure(indicator)
+    def uhc_line_plot(indicator, country_list):
+        return uhc_figure(indicator, country_list)
 
     return dash_app.server
