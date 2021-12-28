@@ -9,6 +9,7 @@ def uhc_figure(indicator, country_list):
     # Extracting graph data from the database
     uhc = pd.read_sql(f"SELECT iso3, year, value, upper, lower FROM gpw13 WHERE indicator={indicator}", conn)
     uhc = uhc[uhc['iso3'].isin(country_list)]
+    uhc[['value', 'lower', 'upper']] = uhc[['value', 'lower', 'upper']].round(2)
     iso = pd.read_sql(f"SELECT id, iso3 FROM iso3", conn)
     iso = iso[iso['id'].isin(country_list)]
 
@@ -57,8 +58,8 @@ def uhc_figure(indicator, country_list):
     uhc_fig.update_layout(hovermode="x unified",
                           xaxis=dict(tickmode='linear'),
                           margin=dict(l=30, r=30, t=50, b=20),
-                          paper_bgcolor='rgba(255,0,0,0.2)',
-                          plot_bgcolor='rgba(0,0,0,0)',
+                          paper_bgcolor='rgba(20,143,119,0.1)',
+                          plot_bgcolor='white',
                           title={
                             'text': title,
                             'y': 0.95,
@@ -69,5 +70,5 @@ def uhc_figure(indicator, country_list):
                           font_family="Sans-serif",
                           font_color="black",
                           title_font_family="Arial",
-                          title_font_color='black')
+                          )
     return uhc_fig

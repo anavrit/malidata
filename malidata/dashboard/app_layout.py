@@ -130,22 +130,22 @@ layout = dbc.Container([
                 )
             ], width={'size': 4, 'offset': 4})
         ]),
+        html.Br(),
         dbc.Row([
             dbc.Col([
                 dcc.Graph(
                     id='uhc-line-plot',
                 ),
-                html.Div([
-                html.H6('Add more countries:'),
+                html.Br(),
+                html.H6('Add countries to compare:'),
                 dcc.Dropdown(
                     id='country-dropdown',
                     options=all_countries_,
                     value=[115],
                     placeholder='Select one or more countries',
                     multi=True,
-                    style={'width': '100%'}
+                    style={'width': '80%'}
                 )
-            ], style={'display': 'flex'})
             ], width=6)
         ])
 ])
