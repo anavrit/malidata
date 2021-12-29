@@ -27,6 +27,7 @@ sql3 = """
         short_name VARCHAR(64) UNIQUE,
         medium_name VARCHAR(256) UNIQUE,
         transformed_name VARCHAR(128) UNIQUE,
+        long_name VARCHAR (512) UNIQUE,
         PRIMARY KEY (id)
         );
       """

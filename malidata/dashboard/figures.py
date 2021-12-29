@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objs as go
 from .connect_database import conn
 from .colors import colors, fillcolors
+import textwrap
 
 def uhc_figure(indicator, country_list):
 
@@ -13,8 +14,10 @@ def uhc_figure(indicator, country_list):
     iso = pd.read_sql(f"SELECT id, iso3 FROM iso3", conn)
     iso = iso[iso['id'].isin(country_list)]
 
-    title_df = pd.read_sql(f"SELECT transformed_name FROM indicator WHERE id={indicator}", conn)
-    title = title_df['transformed_name'][0]
+    title_df = pd.read_sql(f"SELECT long_names FROM long_name WHERE id={indicator}", conn)
+    title = title_df['long_names'][0]
+    split_text = textwrap.wrap(title, width=80)
+
 
     # Creating line chart
     uhc_fig = go.Figure()
@@ -61,7 +64,7 @@ def uhc_figure(indicator, country_list):
                           paper_bgcolor='rgba(20,143,119,0.1)',
                           plot_bgcolor='white',
                           title={
-                            'text': title,
+                            'text': '<br>'.join(split_text),
                             'y': 0.95,
                             'x': 0.5,
                             'xanchor': 'center',
