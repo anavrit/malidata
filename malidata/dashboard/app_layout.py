@@ -19,7 +19,7 @@ all_countries = pd.read_sql("SELECT id, country FROM iso3", conn)
 all_countries_list = all_countries['country'].values
 all_countries_id = all_countries['id'].values
 all_countries_ = [{'label': all_countries_list[i], 'value': all_countries_id[i]} for i in range(len(all_countries_id))]
-
+all_countries_= sorted(all_countries_, key = lambda i: i['label'])
 
 layout = dbc.Container([
     html.Div([
@@ -137,7 +137,7 @@ layout = dbc.Container([
                     id='uhc-line-plot',
                 ),
                 html.Br(),
-                html.H6('Add countries to compare:'),
+                html.H6('Add countries to compare'),
                 dcc.Dropdown(
                     id='country-dropdown',
                     options=all_countries_,
