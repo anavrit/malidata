@@ -135,6 +135,9 @@ layout = dbc.Container([
             dbc.Col([
                 dcc.Graph(
                     id='uhc-line-plot',
+                    config={
+                        'displayModeBar': False
+                    }
                 ),
                 html.Br(),
                 html.H6('Add countries to compare'),
