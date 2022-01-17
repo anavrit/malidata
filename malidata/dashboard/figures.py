@@ -5,19 +5,12 @@ from .connect_database import conn
 from .colors import colors, fillcolors
 import textwrap
 
-def uhc_figure(indicator, country_list):
+def uhc_figure(uhc, iso, indicator, country_list):
 
-    # Extracting graph data from the database
-    uhc = pd.read_sql(f"SELECT iso3, year, value, upper, lower FROM gpw13 WHERE indicator={indicator}", conn)
-    uhc = uhc[uhc['iso3'].isin(country_list)]
-    uhc[['value', 'lower', 'upper']] = uhc[['value', 'lower', 'upper']].round(2)
-    iso = pd.read_sql(f"SELECT id, iso3 FROM iso3", conn)
-    iso = iso[iso['id'].isin(country_list)]
-
+    # Creating wrapped title for graph
     title_df = pd.read_sql(f"SELECT long_names FROM long_name WHERE id={indicator}", conn)
     title = title_df['long_names'][0]
     split_text = textwrap.wrap(title, width=80)
-
 
     # Creating line chart
     uhc_fig = go.Figure()

@@ -4,6 +4,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 from .dash_layout import html_layout
 from .app_layout import layout
+from .data import uhc_data
 from .figures import uhc_figure
 import dash_bootstrap_components as dbc
 from .connect_database import conn
@@ -114,6 +115,7 @@ def init_dashboard(server):
          Input('country-dropdown', 'value')]
     )
     def uhc_line_plot(indicator, country_list):
-        return uhc_figure(indicator, country_list)
+        uhc, iso = uhc_data(indicator, country_list)
+        return uhc_figure(uhc, iso, indicator, country_list)
 
     return dash_app.server
