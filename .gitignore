@@ -6,3 +6,5 @@ __pycache__/
 database.ini
 connection.py
 connect_database.py
+malidata/database/data
+
