@@ -24,7 +24,7 @@ all_countries_= sorted(all_countries_, key = lambda i: i['label'])
 layout = dbc.Container([
     html.Div([
         html.H3('Thirteenth General Programme of Work, 2019-2023'),
-    ], style={'textAlign': 'center', 'color': '#2E86C1', 'marginTop': '10px', 'marginBottom': '20px'}),
+    ], style={'position': 'sticky', 'z-index': '1', 'textAlign': 'center', 'color': '#2E86C1', 'marginTop': '10px', 'marginBottom': '20px'}),
     html.Div([
         html.H4('Tracking Progress in the Triple Billion Targets'),
     ], style={'textAlign': 'center', 'color': 'white', 'backgroundColor': '#2E86C1', 'marginBottom': '20px',
@@ -137,17 +137,20 @@ layout = dbc.Container([
                     id='uhc-line-plot',
                     config={
                         'displayModeBar': False
-                    }
+                    },
+                    style={'marginBottom': '10px'}
                 ),
+                dbc.Button("Download Data", id='uhc-csv', color='success', outline=True, className='me-1', n_clicks=0),
+                dcc.Download(id='uhc-csv-data'),
                 html.Br(),
-                html.H6('Add countries to compare'),
+                html.H6('Add countries to compare', style={'textAlign': 'center'}),
                 dcc.Dropdown(
                     id='country-dropdown',
                     options=all_countries_,
                     value=[115],
                     placeholder='Select one or more countries',
                     multi=True,
-                    style={'width': '80%'}
+                    style={'width': '100%'}
                 )
             ], width=6)
         ])
