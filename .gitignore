@@ -3,8 +3,14 @@
 __pycache__
 __pycache__/
 *.csv
+
 database.ini
 connection.py
 connect_database.py
 malidata/database/data
 
+malidata/.idea/
+.idea/misc 2.xml
+.idea/vcs 2.xml
+.idea/workspace 2.xml
+.idea/workspace 3.xml
