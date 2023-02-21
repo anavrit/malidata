@@ -8,7 +8,7 @@ database.ini
 connection.py
 connect_database.py
 malidata/database/data
-
+malidata/database/map
 malidata/.idea/
 .idea/misc 2.xml
 .idea/vcs 2.xml
