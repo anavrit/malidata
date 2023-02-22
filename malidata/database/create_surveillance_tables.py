@@ -312,37 +312,6 @@ cursor.execute(sql20)
 # \copy region_diarhee_rouge FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_diarhee_rouge.csv' DELIMITER ',' CSV HEADER
 
 sql21 = """
-        CREATE TABLE diarhee_rouge (
-        region_id SMALLINT NOT NULL,
-        cercle_id SMALLINT NOT NULL,
-        isocode CHAR(21) NOT NULL,
-        year INT,
-        population INT,
-        indicator char(5) NOT NULL,
-        value FLOAT,
-        FOREIGN KEY (region_id) REFERENCES region (id),
-        FOREIGN KEY (cercle_id) REFERENCES cercle (id),
-        PRIMARY KEY (region_id, cercle_id, year, indicator)
-        );
-      """
-cursor.execute(sql21)
-# \copy diarhee_rouge FROM '/Users/amitprasad/Documents/mali/malidata/database/data/diarhee_rouge.csv' DELIMITER ',' CSV HEADER
-
-sql22 = """
-        CREATE TABLE region_diarhee_rouge (
-        region_id SMALLINT NOT NULL,
-        year INT,
-        population INT,
-        indicator char(5) NOT NULL,
-        value FLOAT,
-        FOREIGN KEY (region_id) REFERENCES region (id),
-        PRIMARY KEY (region_id, year, indicator)
-        );
-      """
-cursor.execute(sql22)
-# \copy region_diarhee_rouge FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_diarhee_rouge.csv' DELIMITER ',' CSV HEADER
-
-sql23 = """
         CREATE TABLE covid19 (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -356,10 +325,10 @@ sql23 = """
         PRIMARY KEY (region_id, cercle_id, year, indicator)
         );
       """
-cursor.execute(sql23)
+cursor.execute(sql21)
 # \copy covid19 FROM '/Users/amitprasad/Documents/mali/malidata/database/data/covid19.csv' DELIMITER ',' CSV HEADER
 
-sql24 = """
+sql22 = """
         CREATE TABLE region_covid19 (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -370,10 +339,10 @@ sql24 = """
         PRIMARY KEY (region_id, year, indicator)
         );
       """
-cursor.execute(sql24)
+cursor.execute(sql22)
 # \copy region_covid19 FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_covid19.csv' DELIMITER ',' CSV HEADER
 
-sql25 = """
+sql23 = """
         CREATE TABLE pfa (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -386,10 +355,10 @@ sql25 = """
         PRIMARY KEY (region_id, cercle_id, year, semaine)
         );
       """
-cursor.execute(sql25)
+cursor.execute(sql23)
 # \copy pfa FROM '/Users/amitprasad/Documents/mali/malidata/database/data/pfa.csv' DELIMITER ',' CSV HEADER
 
-sql26 = """
+sql24 = """
         CREATE TABLE region_pfa (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -400,10 +369,10 @@ sql26 = """
         PRIMARY KEY (region_id, year, semaine)
         );
       """
-cursor.execute(sql26)
+cursor.execute(sql24)
 # \copy region_pfa FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_pfa.csv' DELIMITER ',' CSV HEADER
 
-sql27 = """
+sql25 = """
         CREATE TABLE dcd_maternel (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -416,10 +385,10 @@ sql27 = """
         PRIMARY KEY (region_id, cercle_id, year, semaine)
         );
       """
-cursor.execute(sql27)
+cursor.execute(sql25)
 # \copy dcd_maternel FROM '/Users/amitprasad/Documents/mali/malidata/database/data/dcd_maternel.csv' DELIMITER ',' CSV HEADER
 
-sql28 = """
+sql26 = """
         CREATE TABLE region_dcd_maternel (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -430,10 +399,10 @@ sql28 = """
         PRIMARY KEY (region_id, year, semaine)
         );
       """
-cursor.execute(sql28)
+cursor.execute(sql26)
 # \copy region_dcd_maternel FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_dcd_maternel.csv' DELIMITER ',' CSV HEADER
 
-sql29 = """
+sql27 = """
         CREATE TABLE dcd_nn (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -446,10 +415,10 @@ sql29 = """
         PRIMARY KEY (region_id, cercle_id, year, semaine)
         );
       """
-cursor.execute(sql29)
+cursor.execute(sql27)
 # \copy dcd_nn FROM '/Users/amitprasad/Documents/mali/malidata/database/data/DCD_NN.csv' DELIMITER ',' CSV HEADER
 
-sql30 = """
+sql28 = """
         CREATE TABLE region_dcd_nn (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -460,10 +429,10 @@ sql30 = """
         PRIMARY KEY (region_id, year, semaine)
         );
       """
-cursor.execute(sql30)
+cursor.execute(sql28)
 # \copy region_dcd_nn FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_DCD_NN.csv' DELIMITER ',' CSV HEADER
 
-sql31 = """
+sql29 = """
         CREATE TABLE tnn (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -476,10 +445,10 @@ sql31 = """
         PRIMARY KEY (region_id, cercle_id, year, indicator, semaine)
         );
       """
-cursor.execute(sql31)
+cursor.execute(sql29)
 # \copy tnn FROM '/Users/amitprasad/Documents/mali/malidata/database/data/TNN.csv' DELIMITER ',' CSV HEADER
 
-sql32 = """
+sql30 = """
         CREATE TABLE region_tnn (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -490,10 +459,10 @@ sql32 = """
         PRIMARY KEY (region_id, year, indicator, semaine)
         );
       """
-cursor.execute(sql32)
+cursor.execute(sql30)
 # \copy region_tnn FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_TNN.csv' DELIMITER ',' CSV HEADER
 
-sql33 = """
+sql31 = """
         CREATE TABLE mort_ne (
         region_id SMALLINT NOT NULL,
         cercle_id SMALLINT NOT NULL,
@@ -506,10 +475,10 @@ sql33 = """
         PRIMARY KEY (region_id, cercle_id, year, indicator, semaine)
         );
       """
-cursor.execute(sql33)
+cursor.execute(sql31)
 # \copy mort_ne FROM '/Users/amitprasad/Documents/mali/malidata/database/data/mort_ne.csv' DELIMITER ',' CSV HEADER
 
-sql34 = """
+sql32 = """
         CREATE TABLE region_mort_ne (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -520,10 +489,10 @@ sql34 = """
         PRIMARY KEY (region_id, year, indicator, semaine)
         );
       """
-cursor.execute(sql34)
+cursor.execute(sql32)
 # \copy region_mort_ne FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_mort_ne.csv' DELIMITER ',' CSV HEADER
 
-sql35 = """
+sql33 = """
         CREATE TABLE region_palu (
         region_id SMALLINT NOT NULL,
         year INT,
@@ -534,5 +503,5 @@ sql35 = """
         PRIMARY KEY (region_id, year, indicator, semaine)
         );
       """
-cursor.execute(sql35)
+cursor.execute(sql33)
 # \copy region_palu FROM '/Users/amitprasad/Documents/mali/malidata/database/data/region_palu.csv' DELIMITER ',' CSV HEADER

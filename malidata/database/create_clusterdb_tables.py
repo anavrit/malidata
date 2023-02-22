@@ -47,7 +47,7 @@ sql4 = """
         PRIMARY KEY (region_id, cercle_id, commune_id),
         FOREIGN KEY (region_id) REFERENCES region (id),
         FOREIGN KEY (cercle_id) REFERENCES cercle (id),
-        FOREIGN KEY (commune_id) REFERENCES commune (id),
+        FOREIGN KEY (commune_id) REFERENCES commune (id)
         );
       """
 cursor.execute(sql4)
